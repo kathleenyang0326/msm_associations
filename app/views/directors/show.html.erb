@@ -14,13 +14,21 @@
       <dt>Bio</dt>
       <dd><%= truncate(@director.bio) %></dd>
 
-      <dt>Image url</dt>
-      <dd><%= @director.image_url %></dd>
+      <dt>Image</dt>
+      <dd><img src="<%= @director.image_url %>"></dd>
 
-<dt>Number of films directed</dt>
+<dt>Number of movies</dt>
 <dd><%= Movie.where(:director_id=>@director.id).count %></dd>
-    </dl>
 
+<dt>Filmography</dt>
+  <dd>  <ul>
+    <%Movie.where(:director_id=>@director.id).each do |movie| %>
+    <li><a href="/movies/<%=movie.id%>"><%= movie.title %></a></li>
+    <% end  %>
+
+    </ul>
+</dd>
+  </dl>
     <div class="btn-group btn-group-justified">
       <a href="/directors" class="btn btn-primary">
         Back
@@ -36,12 +44,7 @@
 </div>
 
 <!-- <table class="table"> -->
-<ul>
-<%Movie.where(:director_id=>@director.id).each do |movie| %>
-<li><a href="/movies/<%=movie.id%>"><%= movie.title %></a></li>
-<% end  %>
 
-</ul>
 
 <div class="row">
   <div class="col-md-12">
