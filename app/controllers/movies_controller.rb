@@ -13,7 +13,6 @@ class MoviesController < ApplicationController
 
   def new
     @movie = Movie.new
-
     render("movies/new.html.erb")
   end
 
