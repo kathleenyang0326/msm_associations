@@ -30,7 +30,9 @@
 <dt>Cast</dt>
       <dd><ul>
         <% @movie.characters.each do |character|%>
+          <%#Character.where(:movie_id=>@movie.id).each do |character|%>
         <li><a href="/actors/<%=character.actor_id %>"><%= character.actor.name %></a>
+            <!-- <li><%= Actor.find_by(:id=>character.actor_id).name %></li> -->
         (<%= character.name %>)
         </li>
       <%end%>
